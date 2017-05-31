@@ -10,7 +10,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_green_light"
+        android:background="@color/colorAccent"
         android:gravity="center">
 
         <LinearLayout
@@ -81,7 +81,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/textView19"
                         app:layout_constraintLeft_toRightOf="@+id/textView19"
                         app:layout_constraintTop_toTopOf="@+id/textView19"
-                        app:srcCompat="@drawable/ic_keyboard_arrow_up_black_24dp" />
+                        app:srcCompat="@drawable/ic_arrow_drop_up_black_24dp" />
 
                     <ImageView
                         android:id="@+id/imageView4"
@@ -94,7 +94,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/textView19"
                         app:layout_constraintLeft_toRightOf="@+id/textView19"
                         app:layout_constraintTop_toTopOf="@+id/textView19"
-                        app:srcCompat="@drawable/ic_keyboard_arrow_down_black_24dp" />
+                        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
 
                     <TextView
                         android:id="@+id/textView19"
@@ -204,7 +204,7 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_green_light"
+        android:background="@color/colorAccent"
         android:gravity="center">
 
         <LinearLayout
