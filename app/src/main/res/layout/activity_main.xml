@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="1"
@@ -9,10 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -20,11 +18,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_green_light"
             android:gravity="center"
-            android:text="Учет за год" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:text="Учет по годам" />
 
     </TableRow>
 
@@ -34,14 +28,6 @@
         android:layout_weight="1"
         android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@android:color/holo_blue_bright"
-            android:text="_май"
-/>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -49,95 +35,56 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:layout_weight="0"
-                android:paddingTop="16dp"
-                android:text="Июнь 2017"
-                android:textSize="22sp" />
-
-            <RelativeLayout
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_margin="16dp"
-                android:layout_weight="0">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/textView19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:text="Осталось:" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:text="Потратили:" />
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="июнь 2017"
+                    android:textSize="36sp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ProgressBar
                     android:id="@+id/progressBar2"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentRight="true"
-                    android:layout_marginTop="19dp"
-                    android:minHeight="40dp"
-                    android:progress="70"
-                    android:progressDrawable="@drawable/myprogressbar" />
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="50dp"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/myprogressbar"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19" />
+            </android.support.constraint.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="false"
-                    android:text="12000" />
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="false"
-                    android:text="18000" />
-
-            </RelativeLayout>
-
-            <ScrollView
-                android:id="@+id/scrollView"
+            <TextView
+                android:id="@+id/textView4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="TextView" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@android:color/holo_blue_bright"
-            android:text="июнь"
-/>
     </TableRow>
 
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textView2"
@@ -146,11 +93,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_green_light"
             android:gravity="center"
-            android:text="Учет за неделю" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:text="Учет по неделям" />
 
     </TableRow>
 
