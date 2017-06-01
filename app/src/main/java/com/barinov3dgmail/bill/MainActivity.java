@@ -29,6 +29,9 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
         fabRClocwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_clockwise);
         fabRAntiClocwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
 
+        TextView tvSpent = (TextView) findViewById(R.id.tv_spent);
+        TextView tvRest = (TextView) findViewById(R.id.tv_rest);
+
         fab_plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
