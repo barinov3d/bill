@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@+id/tilDialogTaskDate"
+            android:layout_alignStart="@+id/tilDialogTaskDate"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView"
+                android:layout_alignStart="@+id/textView"
+                android:layout_below="@+id/textView"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1"
+                android:text="затраты"
+                android:textSize="18sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/radioButton5"
+                android:layout_alignBottom="@+id/radioButton5"
+                android:layout_alignEnd="@+id/tilDialogTaskTitle"
+                android:layout_alignRight="@+id/tilDialogTaskTitle"
+                android:layout_weight="1"
+                android:text="доходы"
+                android:textSize="18sp" />
+        </RadioGroup>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilDialogTaskTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilDialogTaskDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView"
+            android:layout_below="@+id/textView"
+            android:layout_marginTop="60dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:focusableInTouchMode="false"
+                android:inputType="none"
+                android:textSize="16sp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tilDialogTaskTitle"
+            android:layout_alignStart="@+id/tilDialogTaskTitle"
+            android:layout_below="@+id/tilDialogTaskTitle"
+            android:layout_marginTop="20dp"
+            android:text="Выберите категорию"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+</ScrollView>

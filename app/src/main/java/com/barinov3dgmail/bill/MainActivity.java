@@ -1,5 +1,6 @@
 package com.barinov3dgmail.bill;
 
+import android.app.DialogFragment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,8 +8,11 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.barinov3dgmail.bill.dialog.AddingTaskDialogFragment;
+
+public class MainActivity extends AppCompatActivity implements AddingTaskDialogFragment.AddingTaskListener {
 
     FloatingActionButton fab_plus;
     Animation fabOpen, fabClose, fabRClocwise, fabRAntiClocwise;
@@ -38,7 +42,29 @@ public class MainActivity extends AppCompatActivity {
                     fab_plus.startAnimation(fabRClocwise);
                     isOpen = true;
                 }
+
             }
         });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_plus);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment addingTaskDialogFragment = new AddingTaskDialogFragment();
+                addingTaskDialogFragment.show(getFragmentManager(), "AddingTaskDialogFragment");
+            }
+        });
+
+    }
+
+    @Override
+    public void onTaskAdded() {
+        Toast.makeText(this, "Сумма добавлена", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onTaskAddingCancel() {
+        Toast.makeText(this, "Ок, потом так потом...", Toast.LENGTH_LONG).show();
+
     }
 }
