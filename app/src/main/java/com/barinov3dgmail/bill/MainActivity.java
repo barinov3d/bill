@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
     private int allMoney = 0;
 
     private ProgressBar pbHorizontal;
-    private TextView tvProgressHorizontal;
-    private TextView tvProgressMaxHorizontal;
+    private TextView spentShow;
+    private TextView restShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +43,11 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
         fabRAntiClocwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
 
         pbHorizontal = (ProgressBar) findViewById(R.id.pbar_main);
-        tvProgressHorizontal = (TextView) findViewById(R.id.tv_spent);
-        tvProgressMaxHorizontal = (TextView) findViewById(R.id.tv_rest);
+        spentShow = (TextView) findViewById(R.id.tv_spent);
+        restShow = (TextView) findViewById(R.id.tv_rest);
         //maxProgress(maxProgress);
         fragmentManager = getFragmentManager();
+
 
 
         fab_plus.setOnClickListener(new View.OnClickListener() {
@@ -77,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
         });
 
     }
-
-    private void setProgress(int inputMoney) {
+/*
+    private void setUserProgress(int spent) {
         String strProgress = String.valueOf(spent) + " руб.";
         String strNegProgress = String.valueOf(spent-allMoney) + " руб.";
         pbHorizontal.setProgress(spent);
@@ -97,13 +98,30 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
         tvProgressHorizontal.setText(strProgress);
         pbHorizontal.setMax(maxProgress);
     }
+*/
 
+    private void setAllMoney(){
+        allMoney = 1000;
+        pbHorizontal.setMax(allMoney);
+    }
+
+    private void setSpentMoney(int additionSpent){
+        spent+=additionSpent;
+        spentShow.setText(spent + " руб.");
+        pbHorizontal.setProgress(spent);
+    }
+
+    private void setRestMoney(){
+        rest = allMoney - spent;
+
+    }
 
     @Override
     public void onTaskAdded() {
         Toast.makeText(this, "Сумма добавлена", Toast.LENGTH_LONG).show();
-        setProgress(spent);
-        maxProgress(allMoney);
+        setAllMoney();
+        setSpentMoney(AddingTaskDialogFragment.spentMoneyValue);
+        setRestMoney();
     }
 
     @Override

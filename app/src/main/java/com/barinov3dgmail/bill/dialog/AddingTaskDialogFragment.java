@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,7 @@ import com.barinov3dgmail.bill.Utils;
 
 public class AddingTaskDialogFragment extends DialogFragment {
 
+    public static int spentMoneyValue;
     private AddingTaskListener addingTaskListener;
 
     public interface AddingTaskListener {
@@ -127,6 +129,7 @@ public class AddingTaskDialogFragment extends DialogFragment {
                         } else {
                             positiveButton.setEnabled(true);
                             tilTitle.setErrorEnabled(false);
+                            spentMoneyValue = Integer.valueOf(String.valueOf(etTitle.getText()));
                         }
                     }
 

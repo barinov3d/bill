@@ -131,7 +131,7 @@
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="36dp"
-                    android:progress="60"
+                    android:progress="50"
                     android:progressDrawable="@drawable/myprogressbar"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -169,7 +169,7 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="20000"
+                    android:text="0"
                     android:textSize="16sp"
                     app:layout_constraintLeft_toLeftOf="@+id/pbar_main"
                     app:layout_constraintTop_toBottomOf="@+id/pbar_main" />
@@ -181,7 +181,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="10000"
+                    android:text="0"
                     android:textSize="16sp"
                     app:layout_constraintRight_toRightOf="@+id/pbar_main"
                     app:layout_constraintTop_toBottomOf="@+id/pbar_main" />
