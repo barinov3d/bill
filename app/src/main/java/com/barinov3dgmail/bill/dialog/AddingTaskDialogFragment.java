@@ -14,16 +14,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TimePicker;
 
 import java.util.Calendar;
 
 import com.barinov3dgmail.bill.R;
 import com.barinov3dgmail.bill.Utils;
 
-/**
- * Created by Vitaly on 20.08.2015.
- */
+
 public class AddingTaskDialogFragment extends DialogFragment {
 
     private AddingTaskListener addingTaskListener;
@@ -63,7 +60,6 @@ public class AddingTaskDialogFragment extends DialogFragment {
 
         tilTitle.setHint(getResources().getString(R.string.task_title));
         tilDate.setHint(getResources().getString(R.string.task_date));
-//        tilTime.setHint(getResources().getString(R.string.task_time));
 
         builder.setView(container);
 
