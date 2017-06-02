@@ -100,8 +100,9 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
     }
 */
 
-    private void setAllMoney(){
-        allMoney = 1000;
+    private void setAllMoney(int additionRest){
+        rest+=additionRest;
+        spentShow.setText(rest + " руб.");
         pbHorizontal.setMax(allMoney);
     }
 
@@ -110,18 +111,29 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
         spentShow.setText(spent + " руб.");
         pbHorizontal.setProgress(spent);
     }
-
     private void setRestMoney(){
         rest = allMoney - spent;
-
+        restShow.setText(rest + " руб.");
     }
+    private void UpdateMoneyValues(){
+        pbHorizontal.setMax(allMoney);
+        pbHorizontal.setProgress(spent);
+        setRestMoney();
+    }
+}
 
     @Override
     public void onTaskAdded() {
         Toast.makeText(this, "Сумма добавлена", Toast.LENGTH_LONG).show();
-        setAllMoney();
-        setSpentMoney(AddingTaskDialogFragment.spentMoneyValue);
-        setRestMoney();
+        // TODO: add logic for radiobuttons 02.06.2017
+        /*switch(radioButton.valueOn) {
+            case rb_spent :
+                setSpentMoney(AddingTaskDialogFragment.userAddingMoneyValue);
+                break;
+            case rb_rest:
+                setAllMoney(AddingTaskDialogFragment.userAddingMoneyValue);
+                break;*/
+            UpdateMoneyValues();
     }
 
     @Override

@@ -19,7 +19,7 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/radioButton5"
+                android:id="@+id/rb_spent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/textView"
@@ -31,11 +31,11 @@
                 android:textSize="18sp" />
 
             <RadioButton
-                android:id="@+id/radioButton2"
+                android:id="@+id/rb_rest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/radioButton5"
-                android:layout_alignBottom="@+id/radioButton5"
+                android:layout_alignBaseline="@+id/rb_spent"
+                android:layout_alignBottom="@+id/rb_spent"
                 android:layout_alignEnd="@+id/tilDialogTaskTitle"
                 android:layout_alignRight="@+id/tilDialogTaskTitle"
                 android:layout_weight="1"

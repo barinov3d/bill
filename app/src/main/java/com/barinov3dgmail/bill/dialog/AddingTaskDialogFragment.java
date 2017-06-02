@@ -24,7 +24,7 @@ import com.barinov3dgmail.bill.Utils;
 
 public class AddingTaskDialogFragment extends DialogFragment {
 
-    public static int spentMoneyValue;
+    public static int userAddingMoneyValue;
     private AddingTaskListener addingTaskListener;
 
     public interface AddingTaskListener {
@@ -129,7 +129,7 @@ public class AddingTaskDialogFragment extends DialogFragment {
                         } else {
                             positiveButton.setEnabled(true);
                             tilTitle.setErrorEnabled(false);
-                            spentMoneyValue = Integer.valueOf(String.valueOf(etTitle.getText()));
+                            userAddingMoneyValue = Integer.valueOf(String.valueOf(etTitle.getText()));
                         }
                     }
 
