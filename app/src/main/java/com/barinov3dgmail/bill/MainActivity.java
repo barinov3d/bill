@@ -22,13 +22,13 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
     FloatingActionButton fab_plus;
     Animation fabRClocwise, fabRAntiClocwise;
     boolean isOpen = false;
-/*
-    TextView tvSpent = (TextView) findViewById(R.id.tv_spent);
-    TextView tvRest = (TextView) findViewById(R.id.tv_rest);*/
 
     android.app.FragmentManager fragmentManager;
-    private int progress = 0;
-    private int maxProgress = 0;
+
+    private int spent = 0;
+    private int rest = 0;
+    private int allMoney = 0;
+
     private ProgressBar pbHorizontal;
     private TextView tvProgressHorizontal;
     private TextView tvProgressMaxHorizontal;
@@ -67,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
         });
 
 
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_plus);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,30 +77,18 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
         });
 
     }
-/*
-    public void onClick(View v, int number) {
-        if (number>0) progress = progress + number;
-        else maxProgress = maxProgress - number;
-        //postProgress(progress);
-        //maxProgress(maxProgress);
-    }
-    public void onClick(View v) {
 
-        onClick(findViewById(Ids.ID_ok1), 10);
-    }*/
+    private void setProgress(int inputMoney) {
+        String strProgress = String.valueOf(spent) + " руб.";
+        String strNegProgress = String.valueOf(spent-allMoney) + " руб.";
+        pbHorizontal.setProgress(spent);
 
-    private void postProgress(int progress) {
-        String strProgress = String.valueOf(progress) + " руб.";
-        String strNegProgress = String.valueOf(progress-maxProgress) + " руб.";
-        pbHorizontal.setProgress(progress);
-
-        if (progress == 0) {
+        if (spent == 0) {
             pbHorizontal.setSecondaryProgress(0);
         } else {
-            pbHorizontal.setSecondaryProgress(progress + 5);
+            pbHorizontal.setSecondaryProgress(spent + 5);
         }
-
-        if (progress<=maxProgress)
+        if (spent<=allMoney)
             tvProgressMaxHorizontal.setText(strProgress);
         else tvProgressMaxHorizontal.setText("уходим в минус "+"-"+strNegProgress);
     }
@@ -112,10 +99,11 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
     }
 
 
-
     @Override
     public void onTaskAdded() {
         Toast.makeText(this, "Сумма добавлена", Toast.LENGTH_LONG).show();
+        setProgress(spent);
+        maxProgress(allMoney);
     }
 
     @Override
