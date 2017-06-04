@@ -2,9 +2,9 @@
 <resources>
     <!--<color name="colorPrimary">#8bc34a</color>-->
     <!--<color name="colorPrimaryDark">#5a9216</color>-->
-    <color name="colorAccent">#c7c7c7</color>
-    <color name="colorPrimary">#76ff03</color>
-    <color name="colorPrimaryDark">#32cb00</color>
+    <color name="colorAccent">#819ca9</color>
+    <color name="colorPrimary">#64dd17</color>
+    <color name="colorPrimaryDark">#1faa00</color>
     <!--<color name="colorAccent">#b0ff57</color>-->
     <color name="Error">#cb0300</color>
 </resources>

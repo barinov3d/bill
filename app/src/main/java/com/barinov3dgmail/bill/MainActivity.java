@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
 
     android.app.FragmentManager fragmentManager;
 
-    private int spent = 0;
-    private int rest = 0;
-    private int allMoney = 0;
+    private int spent;
+    private int rest;
+    private int allMoney;
 
     private ProgressBar pbHorizontal;
     private TextView spentShow;
@@ -44,6 +44,12 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(getString(R.string.PREF_FILE), MODE_PRIVATE);
+        spent = sharedPreferences.getInt(getString(R.string.PREF_SPENT), 0);
+        rest = sharedPreferences.getInt(getString(R.string.PREF_REST), 0);
+        allMoney = sharedPreferences.getInt(getString(R.string.PREF_ALLMONEY), 0);
 
 
         fab_plus = (FloatingActionButton) findViewById(R.id.fab_plus);
@@ -85,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
                 addingTaskDialogFragment.show(getFragmentManager(), "AddingTaskDialogFragment");
             }
         });
-
+        updateMoneyProgress();
     }
 
     public void setAllMoney(int additionRest){
@@ -135,13 +141,20 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
         Toast.makeText(this, "Ок, потом так потом...", Toast.LENGTH_LONG).show();
     }
 
-    public void SaveSettings(View view){
-        SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(getString(R.string.PREF_FILE), MODE_PRIVATE);
 
+    public void saveSettings(){
+        SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(getString(R.string.PREF_FILE), MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(getString(R.string.PREF_SPENT),spent);
-        editor.putInt(getString(R.string.REST_REST),rest);
+        editor.putInt(getString(R.string.PREF_REST),rest);
         editor.putInt(getString(R.string.PREF_ALLMONEY),allMoney);
+        editor.commit();
 
+    }
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+
+        saveSettings();
     }
 }

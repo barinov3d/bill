@@ -21,7 +21,7 @@
 
     <string name="PREF_FILE">APP_PREF_FILE</string>
     <string name="PREF_SPENT">APP_PREF_SPENT</string>
-    <string name="REST_REST">APP_PREF_REST</string>
+    <string name="PREF_REST">APP_PREF_REST</string>
     <string name="PREF_ALLMONEY">APP_PREF_ALLMONEY</string>
 
 </resources>
