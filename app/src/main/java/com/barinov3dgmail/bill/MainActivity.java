@@ -1,6 +1,8 @@
 package com.barinov3dgmail.bill;
 
 import android.app.DialogFragment;
+import android.content.SharedPreferences;
+import android.graphics.PorterDuff;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
@@ -12,6 +14,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
     Animation fabRClocwise, fabRAntiClocwise;
     boolean isOpen = false;
 
+    View selectedRadio;
+    //RadioButton selectedRadio;
+
     android.app.FragmentManager fragmentManager;
 
     private int spent = 0;
@@ -32,23 +38,27 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
     private ProgressBar pbHorizontal;
     private TextView spentShow;
     private TextView restShow;
+    private TextView allMoneyShow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         fab_plus = (FloatingActionButton) findViewById(R.id.fab_plus);
         fabRClocwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_clockwise);
         fabRAntiClocwise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.rotate_anticlockwise);
 
+        selectedRadio = findViewById(R.id.rb_spent);
         pbHorizontal = (ProgressBar) findViewById(R.id.pbar_main);
         spentShow = (TextView) findViewById(R.id.tv_spent);
         restShow = (TextView) findViewById(R.id.tv_rest);
-        //maxProgress(maxProgress);
+        allMoneyShow = (TextView) findViewById(R.id.tv_allAddedMoney);
+
         fragmentManager = getFragmentManager();
 
-
+        //selectedRadio.setChecked(true);
 
         fab_plus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
             }
         });
 
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_plus);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,67 +87,61 @@ public class MainActivity extends AppCompatActivity implements AddingTaskDialogF
         });
 
     }
-/*
-    private void setUserProgress(int spent) {
-        String strProgress = String.valueOf(spent) + " руб.";
-        String strNegProgress = String.valueOf(spent-allMoney) + " руб.";
-        pbHorizontal.setProgress(spent);
 
-        if (spent == 0) {
-            pbHorizontal.setSecondaryProgress(0);
-        } else {
-            pbHorizontal.setSecondaryProgress(spent + 5);
-        }
-        if (spent<=allMoney)
-            tvProgressMaxHorizontal.setText(strProgress);
-        else tvProgressMaxHorizontal.setText("уходим в минус "+"-"+strNegProgress);
-    }
-    private void maxProgress(int maxProgress) {
-        String strProgress = String.valueOf(maxProgress) + " руб.";
-        tvProgressHorizontal.setText(strProgress);
-        pbHorizontal.setMax(maxProgress);
-    }
-*/
-
-    private void setAllMoney(int additionRest){
-        rest+=additionRest;
-        spentShow.setText(rest + " руб.");
-        pbHorizontal.setMax(allMoney);
+    public void setAllMoney(int additionRest){
+        allMoney+=additionRest;
+        rest=allMoney-spent;
     }
 
-    private void setSpentMoney(int additionSpent){
+    public void setSpentMoney(int additionSpent){
         spent+=additionSpent;
-        spentShow.setText(spent + " руб.");
-        pbHorizontal.setProgress(spent);
+        rest=allMoney-spent;
     }
-    private void setRestMoney(){
-        rest = allMoney - spent;
-        restShow.setText(rest + " руб.");
-    }
-    private void UpdateMoneyValues(){
+    private void updateMoneyProgress(){
         pbHorizontal.setMax(allMoney);
         pbHorizontal.setProgress(spent);
-        setRestMoney();
+        restShow.setText(rest + " руб.");
+        spentShow.setText(spent + " руб.");
+        allMoneyShow.setText("Доход общий: " + allMoney + " руб.");
+
     }
-}
+
+    public void onRadioButtonClicked(View view) {
+        selectedRadio = view;
+    }
 
     @Override
     public void onTaskAdded() {
         Toast.makeText(this, "Сумма добавлена", Toast.LENGTH_LONG).show();
-        // TODO: add logic for radiobuttons 02.06.2017
-        /*switch(radioButton.valueOn) {
-            case rb_spent :
+        ChosingRadioButtonCategory();
+        updateMoneyProgress();
+    }
+
+
+    public void ChosingRadioButtonCategory(){
+
+        switch(selectedRadio.getId()) {
+            case R.id.rb_spent:
                 setSpentMoney(AddingTaskDialogFragment.userAddingMoneyValue);
                 break;
-            case rb_rest:
+            case R.id.rb_rest:
                 setAllMoney(AddingTaskDialogFragment.userAddingMoneyValue);
-                break;*/
-            UpdateMoneyValues();
+                break;
+        }
     }
 
     @Override
     public void onTaskAddingCancel() {
         Toast.makeText(this, "Ок, потом так потом...", Toast.LENGTH_LONG).show();
+    }
+
+    public void SaveSettings(View view){
+        SharedPreferences sharedPreferences = MainActivity.this.getSharedPreferences(getString(R.string.PREF_FILE), MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(getString(R.string.PREF_SPENT),spent);
+        editor.putInt(getString(R.string.REST_REST),rest);
+        editor.putInt(getString(R.string.PREF_ALLMONEY),allMoney);
 
     }
 }

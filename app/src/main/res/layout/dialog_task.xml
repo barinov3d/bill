@@ -28,7 +28,8 @@
                 android:layout_marginTop="0dp"
                 android:layout_weight="1"
                 android:text="затраты"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="onRadioButtonClicked"/>
 
             <RadioButton
                 android:id="@+id/rb_rest"
@@ -40,7 +41,8 @@
                 android:layout_alignRight="@+id/tilDialogTaskTitle"
                 android:layout_weight="1"
                 android:text="доходы"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:onClick="onRadioButtonClicked"/>
         </RadioGroup>
 
         <android.support.design.widget.TextInputLayout
